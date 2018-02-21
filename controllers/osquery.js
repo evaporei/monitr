@@ -9,7 +9,7 @@ router.get("/api/osquery/:select", async (req, res) => {
 });
 
 router.get("/api/command/:command", async (req, res) => {
-  const command = req.params.command.replace("|", '\\');
+  const command = req.params.command.replace(new RegExp("/", "g"), '');
   shell.exec(`${command}`, {
     silent: true
   }, (code, stdout, stderr) => res.status(201).send({output: "Comando enviado"}));

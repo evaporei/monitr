@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +13,13 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "shelljs": "^0.8.1"
+  },
+  "pkg": {
+    "assets": [
+      "controllers/**/*"
+    ],
+    "targets": [
+      "node8-win-x64"
+    ]
   }
 }
