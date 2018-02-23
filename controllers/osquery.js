@@ -9,10 +9,15 @@ router.get("/api/osquery/:select", async (req, res) => {
 });
 
 router.get("/api/command/:command", async (req, res) => {
-  const command = req.params.command.replace(/#/g, "/");
+  const command = replaceAll(req.params.command, '$', '/');
+  console.log(command);
   shell.exec(`${command}`, {
     silent: true
   }, (code, stdout, stderr) => res.status(201).send({output: "Comando enviado"}));
 });
 
 module.exports = router;
+
+function replaceAll(string, removido, adicionado) {
+    return string.split(removido).join(adicionado);
+}
