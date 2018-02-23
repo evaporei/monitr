@@ -3,7 +3,8 @@ const router = express.Router();
 const shell = require("shelljs");
 
 router.get("/api/osquery/:select", async (req, res) => {
-  shell.exec(`osqueryi --json "${req.params.select}"`, {
+  console.log(req.params.select);
+  shell.exec(`c:\\ProgramData\\osquery\\osqueryi.exe --json "${req.params.select}"`, {
     silent: true
   }, (code, stdout, stderr) => res.status(201).send({output: JSON.parse(stdout)}));
 });
